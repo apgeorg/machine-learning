@@ -5,16 +5,20 @@ from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
 K.set_image_dim_ordering('th')
 
-# dimensions of our images.
-img_width, img_height = 90, 90
 train_data_dir = './flower_photos/train/'
 validation_data_dir = './flower_photos/validation/'
+# num. of train samples
 nb_train_samples = 3670
+# num. of validation samples
 nb_validation_samples = 1000
+# dimensions of our images
+img_width, img_height = 90, 90
+# num. of epochs
 nb_epoch = 50
+# num. of output classes
 nb_classes = 5
 
-
+# create model 
 model = Sequential()
 model.add(Convolution2D(32, 3, 3, input_shape=(3, img_width, img_height)))
 model.add(Activation('relu'))
@@ -35,17 +39,10 @@ model.add(Dropout(0.5))
 model.add(Dense(nb_classes))
 model.add(Activation('softmax'))
 
-model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
-              metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
 # this is the augmentation configuration we will use for training
-train_datagen = ImageDataGenerator(
-        rescale=1./255,
-        shear_range=0.2,
-        zoom_range=0.2,
-        horizontal_flip=False)
-
+train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=False)
 
 # this is the augmentation configuration we will use for testing:
 # only rescaling
@@ -70,5 +67,6 @@ model.fit_generator(
         validation_data=validation_generator,
         nb_val_samples=nb_validation_samples)
 
+# save weights 
 model.save_weights('flowernet.h5')
 
