@@ -26,7 +26,7 @@ model.add(Dense(1, activation='sigmoid'))
 sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=['accuracy'])
 # Fit the model
-model.fit(trX, trY, nb_epoch=10000, batch_size=1)
+model.fit(trX, trY, nb_epoch=5000, batch_size=1)
 # Evaluate the model
 scores = model.evaluate(trX, trY)
 print("%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
