@@ -67,6 +67,3 @@ model.fit_generator(
         validation_data=validation_generator,
         nb_val_samples=nb_validation_samples)
 
-# save weights 
-model.save_weights('flowernet.h5')
-
