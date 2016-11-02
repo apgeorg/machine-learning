@@ -4,6 +4,13 @@
 Simple XOR example with Keras.
 
 ## flowers 
-This example shows how you can build and train deep convolution neural networks on flower photos. 
-The dataset is available on https://www.tensorflow.org/versions/r0.9/how_tos/image_retraining/index.html
+This examples shows how you can build and train deep convolution neural networks on flower photos. 
+You can download the dataset either by executing the script below:
+
+```bash
+$ ./install.sh
+```
+
+or manually from https://www.tensorflow.org/versions/r0.9/how_tos/image_retraining/index.html
+
 
