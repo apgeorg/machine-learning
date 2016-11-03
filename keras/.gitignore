@@ -1,3 +1,5 @@
 flower_photos/
 __pycache__/
 *.pyc
+*.hdf5
+*.json
