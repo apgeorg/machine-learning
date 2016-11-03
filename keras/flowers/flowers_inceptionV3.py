@@ -17,10 +17,6 @@ from keras.optimizers import SGD, RMSprop
 from keras.callbacks import ModelCheckpoint
 from keras import backend as K
 
-import sys
-sys.path.append("/home/apgeorg/projects/github/public/keras-lib/")
-from utils.models import print_layers
-
 # Data directories
 data_dir = "flower_photos/"
 train_data_dir = data_dir + "train/"
@@ -49,8 +45,6 @@ model = Model(input=inceptV3_model.input, output=y_pred)
 for layer in inceptV3_model.layers:
     layer.trainable = False
    
-print_layers(model)
-
 # RMSprop used as optimizer
 rmsprop = RMSprop(lr=0.001)
 # Compile the model
