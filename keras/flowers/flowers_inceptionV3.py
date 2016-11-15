@@ -23,7 +23,7 @@ train_data_dir = data_dir + "train/"
 validation_data_dir = data_dir + "validation/"
 
 # Model parameters
-num_epoch = 2
+num_epoch = 5
 num_class = 5
 train_batch_size = 32
 validation_batch_size = 32
@@ -73,7 +73,7 @@ validation_generator = test_datagen.flow_from_directory(
       
 # Callback for saving weights after the end of an epoch.
 filename="flowers-inceptionV3-top-{epoch:02d}-{val_acc:.2f}.train.hdf5"
-cb_save_best_after_epoch = ModelCheckpoint(filename, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+cb_save_best_after_epoch = ModelCheckpoint("netfiles/" + filename, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 
 # Train the model for a few epochs.
 # Fits the model on data-generated batch-by-batch.
@@ -106,7 +106,7 @@ model.fit_generator(
         samples_per_epoch=len(train_generator.filenames),
         nb_epoch=num_epoch,
         validation_data=validation_generator,
-        nb_val_samples=1024,
+        nb_val_samples=len(validation_generator.filenames),
         callbacks=[cb_save_best_after_epoch])
         
         
