@@ -23,7 +23,7 @@ model = Sequential()
 model.add(Dense(2, input_dim=2, activation='sigmoid'))
 model.add(Dense(1, activation='sigmoid'))
 # Compile model
-sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=['accuracy'])
 # Fit the model
 model.fit(trX, trY, nb_epoch=5000, batch_size=1)
