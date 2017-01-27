@@ -1,5 +1,0 @@
-input/
-__pycache__/
-*.pyc
-*.hdf5
-*.json
