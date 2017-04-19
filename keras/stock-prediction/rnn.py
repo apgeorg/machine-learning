@@ -37,7 +37,7 @@ regressor.add(LSTM(4, activation='sigmoid', input_shape=(None, 1)))
 regressor.add(Dense(1))
 
 # Compiling the RNN
-regressor.compile(optimizer='adam', loss='mean_squared_error')
+regressor.compile(optimizer='adam', loss='mse')
 
 # Fitting the RNN to the Training set
 regressor.fit(X_train, y_train, batch_size=32, nb_epoch=200)
