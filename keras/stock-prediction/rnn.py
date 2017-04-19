@@ -28,31 +28,32 @@ from keras.models import Sequential
 from keras.layers import Dense, LSTM
 
 # Initialising the RNN
-regressor = Sequential()
+model = Sequential()
 
 # Adding the input layer and the LSTM layer
-regressor.add(LSTM(4, activation='sigmoid', input_shape=(None, 1)))
+model.add(LSTM(4, activation='sigmoid', input_shape=(None, 1)))
 
 # Adding the output layer
-regressor.add(Dense(1))
+model.add(Dense(1))
 
 # Compiling the RNN
-regressor.compile(optimizer='adam', loss='mse')
+model.compile(optimizer='adam', loss='mse')
 
 # Fitting the RNN to the Training set
-regressor.fit(X_train, y_train, batch_size=32, nb_epoch=200)
+model.fit(X_train, y_train, batch_size=32, nb_epoch=200)
 
 # Step 3 - Making the predictions and visualising the results
-
-# Getting the predicted stock price of 2017
-inputs = training_set[1237:1258]
-inputs = np.reshape(inputs, (21, 1, 1))
-predictions = regressor.predict(inputs)
-predicted_stock_price = sc.inverse_transform(predictions)
 
 # Getting the real stock price of 2017
 test_set = pd.read_csv('dataset/Stock_Price_Test.csv')
 real_stock_price = test_set.iloc[:,1:2].values
+
+# Getting the predicted stock price of 2017
+inputs = real_stock_price
+inputs = sc.fit_transform(inputs)
+inputs = np.reshape(inputs, (len(inputs), 1, 1))
+predictions = model.predict(inputs)
+predicted_stock_price = sc.inverse_transform(predictions)
 
 # Visualising the results
 plt.plot(real_stock_price, color='red', label='Real Stock Price')
