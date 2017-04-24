@@ -1,18 +1,17 @@
 # Importing the Keras libraries and packages
 from keras.models import Sequential
-from keras.layers import Convolution2D, MaxPooling2D
-from keras.layers import Activation, Dropout, Flatten, Dense
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from keras.preprocessing.image import ImageDataGenerator
 
 # Initialising the CNN
 model = Sequential()
 
 # 1st - Convolution layer with Pooling layer 
-model.add(Convolution2D(32, 3, 3, input_shape=(64, 64, 3), activation = 'relu'))
+model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 # 2nd - Convolution layer with Pooling layer 
-model.add(Convolution2D(32, 3, 3, activation = 'relu'))
+model.add(Conv2D(32, (3, 3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 # Flattening
@@ -48,8 +47,8 @@ test_set = test_datagen.flow_from_directory('dataset/test_set',
                                             class_mode = 'binary')
                                             
 model.fit_generator(training_set,
-                         samples_per_epoch=8000,
-                         nb_epoch = 25,
+                         steps_per_epoch=8000,
+                         epochs = 25,
                          validation_data = test_set,
-                         nb_val_samples = 2000)
+                         validation_steps = 2000)
 

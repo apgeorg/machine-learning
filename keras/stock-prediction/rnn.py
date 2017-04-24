@@ -40,7 +40,7 @@ model.add(Dense(1))
 model.compile(optimizer='adam', loss='mse')
 
 # Fitting the RNN to the Training set
-model.fit(X_train, y_train, batch_size=32, nb_epoch=200)
+model.fit(X_train, y_train, batch_size=32, epochs=200)
 
 # Step 3 - Making the predictions and visualising the results
 
