@@ -1,6 +1,7 @@
-kaggle/
-.ipynb_checkpoints/
-__pycache__/
+kaggle
+.ipynb_checkpoints
+.idea
+__pycache__
 *.pyc
 *.hdf5
 *.h5
