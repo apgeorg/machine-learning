@@ -1,3 +1,6 @@
 kaggle/
-*.DS_Store
-
+__pycache__/
+*.pyc
+*.hdf5
+*.h5
+*.json
