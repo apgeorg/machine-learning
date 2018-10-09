@@ -1,4 +1,5 @@
 kaggle/
+.ipynb_checkpoints/
 __pycache__/
 *.pyc
 *.hdf5
