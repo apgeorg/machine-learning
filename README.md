@@ -9,6 +9,4 @@ A simple Convolutional Neural Network (CNN) solution with an accuracy of over 90
 
 A simple Recurrent Neural Network (RNN) based on Long Short-Term Memory (LSTM) for Google stock prediction. 
 
-## Cartpole Balancer
-
 
